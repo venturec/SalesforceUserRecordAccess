@@ -28,3 +28,8 @@ CustomObject (Custom Metadata Type for use with the Data Table in the Screen Flo
 
 Custom Tab
 * User_Record_Level_Access_by_Record_Type
+
+To streamline the deployment process to the org, I added the zip file SalesforceUserRecordAccess_Zipped
+You can download this and then deploy it to your sandbox.
+
+If you want to take a look at the code/configuration first, then you can use the Main branch for that and clone it to a repository of your own.
