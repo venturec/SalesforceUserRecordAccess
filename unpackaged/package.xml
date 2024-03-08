@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+<types>
+<members>UserAccessDefinedVars</members>
+<members>UserAccessLevel</members>
+<members>UserAccessLevelTest</members>
+<name>ApexClass</name>
+</types>
+<types>
+<members>User_Record_Level_Access_by_Record_Type</members>
+<name>FlexiPage</name>
+</types>
+<types>
+<members>Get_User_Record_Access_Levels</members>
+<name>Flow</name>
+</types>
+<types>
+<members>User_Access_Value__mdt-User Access Value Layout</members>
+<name>Layout</name>
+</types>
+<types>
+<members>User_Access_Value__mdt.RecordIdTested__c</members>
+<members>User_Access_Value__mdt.RecordTypeDeveloperName__c</members>
+<members>User_Access_Value__mdt.RecordTypeName__c</members>
+<members>User_Access_Value__mdt.UserFullName__c</members>
+<members>User_Access_Value__mdt.UserId__c</members>
+<members>User_Access_Value__mdt.User_Access_Level__c</members>
+<members>User_Access_Value__mdt.sObjectType__c</members>
+<name>CustomField</name>
+</types>
+<types>
+<members>User_Access_Value__mdt</members>
+<name>CustomObject</name>
+</types>
+<types>
+<members>User_Record_Level_Access_by_Record_Type</members>
+<name>CustomTab</name>
+</types>
+<version>59.0</version>
+</Package>
