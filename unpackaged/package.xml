@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 <types>
+<members>BuildSobjectTypeValues</members>
 <members>UserAccessDefinedVars</members>
 <members>UserAccessLevel</members>
 <members>UserAccessLevelTest</members>
@@ -19,6 +20,7 @@
 <name>Layout</name>
 </types>
 <types>
+<members>Sobject_Type__c.Sobject_Type__c</members>
 <members>User_Access_Value__mdt.RecordIdTested__c</members>
 <members>User_Access_Value__mdt.RecordTypeDeveloperName__c</members>
 <members>User_Access_Value__mdt.RecordTypeName__c</members>
@@ -29,6 +31,7 @@
 <name>CustomField</name>
 </types>
 <types>
+<members>Sobject_Type__c</members>
 <members>User_Access_Value__mdt</members>
 <name>CustomObject</name>
 </types>

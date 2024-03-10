@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
+        <name>Build_Sobject_Type_Values</name>
+        <label>Build Sobject Type Values</label>
+        <locationX>1093</locationX>
+        <locationY>311</locationY>
+        <actionName>BuildSobjectTypeValues</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>User_Selected</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <nameSegment>BuildSobjectTypeValues</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
         <name>Get_User_Access_Levels</name>
         <label>Get User Access Levels</label>
-        <locationX>176</locationX>
-        <locationY>242</locationY>
+        <locationX>1089</locationX>
+        <locationY>735</locationY>
         <actionName>UserAccessLevel</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -23,6 +37,12 @@
                 <elementReference>SelectedUser</elementReference>
             </value>
         </inputParameters>
+        <inputParameters>
+            <name>sobjectType</name>
+            <value>
+                <elementReference>SobjectTypeSelected</elementReference>
+            </value>
+        </inputParameters>
         <nameSegment>UserAccessLevel</nameSegment>
         <storeOutputAutomatically>true</storeOutputAutomatically>
         <versionSegment>1</versionSegment>
@@ -31,8 +51,8 @@
     <assignments>
         <name>Add_User_Access_Val_to_List</name>
         <label>Add User Access Val to List</label>
-        <locationX>264</locationX>
-        <locationY>566</locationY>
+        <locationX>1436</locationX>
+        <locationY>1027</locationY>
         <assignmentItems>
             <assignToReference>UserAccessValsList</assignToReference>
             <operator>Add</operator>
@@ -47,8 +67,8 @@
     <assignments>
         <name>Create_User_Access_Val</name>
         <label>Create User Access Val</label>
-        <locationX>264</locationX>
-        <locationY>458</locationY>
+        <locationX>1436</locationX>
+        <locationY>813</locationY>
         <assignmentItems>
             <assignToReference>UserAccessVal.UserId__c</assignToReference>
             <operator>Assign</operator>
@@ -129,6 +149,19 @@ To avoid exposing record level access unnecessarily, just be sure to assign the 
         <valueField>Id</valueField>
     </dynamicChoiceSets>
     <dynamicChoiceSets>
+        <name>SobjectTypeChoices</name>
+        <dataType>String</dataType>
+        <displayField>Sobject_Type__c</displayField>
+        <object>Sobject_Type__c</object>
+        <outputAssignments>
+            <assignToReference>SobjectTypeSelected</assignToReference>
+            <field>Sobject_Type__c</field>
+        </outputAssignments>
+        <sortField>Sobject_Type__c</sortField>
+        <sortOrder>Asc</sortOrder>
+        <valueField>Sobject_Type__c</valueField>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
         <name>UserChoice</name>
         <dataType>String</dataType>
         <displayField>Name</displayField>
@@ -159,8 +192,8 @@ To avoid exposing record level access unnecessarily, just be sure to assign the 
     <loops>
         <name>User_Access_Val_Loop</name>
         <label>User Access Val Loop</label>
-        <locationX>176</locationX>
-        <locationY>350</locationY>
+        <locationX>1088</locationX>
+        <locationY>920</locationY>
         <collectionReference>Get_User_Access_Levels.filteredUserAccess</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -179,7 +212,7 @@ To avoid exposing record level access unnecessarily, just be sure to assign the 
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -193,8 +226,8 @@ To avoid exposing record level access unnecessarily, just be sure to assign the 
     <screens>
         <name>User_Access_Results_List</name>
         <label>User Access Results List</label>
-        <locationX>176</locationX>
-        <locationY>758</locationY>
+        <locationX>1092</locationX>
+        <locationY>1329</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -246,8 +279,8 @@ To avoid exposing record level access unnecessarily, just be sure to assign the 
     <screens>
         <name>User_Selected</name>
         <label>User Selected</label>
-        <locationX>176</locationX>
-        <locationY>134</locationY>
+        <locationX>1089</locationX>
+        <locationY>534</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -259,6 +292,15 @@ To avoid exposing record level access unnecessarily, just be sure to assign the 
             <choiceReferences>UserChoice</choiceReferences>
             <dataType>String</dataType>
             <fieldText>Select User</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Select_Sobject_Type</name>
+            <choiceReferences>SobjectTypeChoices</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Select Sobject Type</fieldText>
             <fieldType>DropdownBox</fieldType>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>false</isRequired>
@@ -298,10 +340,10 @@ To avoid exposing record level access unnecessarily, just be sure to assign the 
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>50</locationX>
-        <locationY>0</locationY>
+        <locationX>970</locationX>
+        <locationY>48</locationY>
         <connector>
-            <targetReference>User_Selected</targetReference>
+            <targetReference>Build_Sobject_Type_Values</targetReference>
         </connector>
     </start>
     <status>Active</status>
@@ -332,10 +374,20 @@ To avoid exposing record level access unnecessarily, just be sure to assign the 
         <isOutput>false</isOutput>
     </variables>
     <variables>
+        <name>SobjectTypeSelected</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>&apos;&apos;</stringValue>
+        </value>
+    </variables>
+    <variables>
         <name>UserAccessVal</name>
         <dataType>SObject</dataType>
         <isCollection>false</isCollection>
-        <isInput>true</isInput>
+        <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>User_Access_Value__mdt</objectType>
     </variables>
