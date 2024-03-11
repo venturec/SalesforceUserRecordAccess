@@ -45,6 +45,7 @@ public class UserAccessLevelTest
         
         UserAccessLevel.Request req = new UserAccessLevel.Request();
         req.selectedUser = testUser;
+        req.sobjectType = '';
         req.selectedRecordTypeId = '';
         
         List<UserAccessLevel.Request> reqList = new List<UserAccessLevel.Request>{req};
@@ -61,6 +62,7 @@ public class UserAccessLevelTest
         
         UserAccessLevel.Request req = new UserAccessLevel.Request();
         req.selectedUser = testUser;
+        req.sobjectType = '';
         req.selectedRecordTypeId = recordTypeId;
         
         List<UserAccessLevel.Request> reqList = new List<UserAccessLevel.Request>{req};
@@ -68,5 +70,28 @@ public class UserAccessLevelTest
         Test.startTest();
         UserAccessLevel.getUserAccessLevels(reqList);
         Test.stopTest();
+    }
+    
+    @isTest
+    static void testUserAccessLevelsWithSobjectType()
+    {
+        setup();
+        
+        UserAccessLevel.Request req = new UserAccessLevel.Request();
+        req.selectedUser = testUser;
+        req.sobjectType = 'Account';
+        req.selectedRecordTypeId = '';
+        
+        List<UserAccessLevel.Request> reqList = new List<UserAccessLevel.Request>{req};
+        
+        Test.startTest();
+        UserAccessLevel.getUserAccessLevels(reqList);
+        Test.stopTest();
+    }
+    
+    @isTest
+    static void testBuildSobjectTypes()
+    {
+        BuildSobjectTypeValues.buildSobjectTypes();
     }
 }
